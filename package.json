@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dist:clone": "cd dist && git clone https://github.com/Protectator/runepedia-public-resources-static.git .",
+    "dist:push": "cd dist && git add * && git commit -m \"runepedia-public-resources dist:push\" && git push",
     "card-images": "node card-images.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "simple-git": "^1.131.0"
+    "request": "^2.88.0",
+    "simple-git": "^1.131.0",
+    "unzipper": "^0.10.8"
   }
 }
