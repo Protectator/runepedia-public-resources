@@ -1,12 +1,15 @@
-name: Node.js CI
+name: Get and push images
 
 on:
+  push:
+    branches:
+      - master
   schedule:
     - cron:  '0 12 * * *'
 
 jobs:
   build:
-
+    name: Get cards
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,9 +22,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run dist:clone
-    - run: npm run card-images
-    - run: npm run dist:push
+    - name: Npm run
+    - run: |
+        npm ci
+        npm run dist:clone
+        npm run card-images
+        npm run dist:push
       env:
         CI: true
